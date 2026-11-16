@@ -13,9 +13,8 @@ security:
 
     firewalls:
         dev:
-            # Ensure dev tools and static assets are always allowed
             pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security:
+            security: false
         main:
             lazy: true
             provider: app_user_provider
@@ -24,6 +23,8 @@ security:
                 check_path: app_login
             logout:
                 path: app_logout
+            login_throttling:
+                max_attempts: 2
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
 
